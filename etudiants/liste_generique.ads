@@ -7,6 +7,7 @@
 --
 
 generic
+-- Test
     type Element is private;
     with procedure Put(E : in Element);
     
