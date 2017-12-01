@@ -1,0 +1,6 @@
+git	push 
+	pull
+	add +nom du fichier
+	status
+	commit -m "txt du commentaire"
+
