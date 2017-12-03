@@ -8,33 +8,28 @@ procedure P4test is
 	J1 : MyPuissance4.Joueur;
 	J2 : MyPuissance4.Joueur;
 	G : MyPuissance4.Grille;
+	C : MyPuissance4.Coup;
 begin
 	MyPuissance4.InitGrille(G);
 	MyPuissance4.AfficheGrille(G);
 	
-	J1 := ("Michel",'X',1);
-	J2 := ("Jaquie",'O',2);
+	J1 := ('X',1);
+	J2 := ('O',2);
 	MyPuissance4.AfficheJoueur(J1);
 	MyPuissance4.AfficheJoueur(J2);
 	
-	MyPuissance4.AjoutePion(G,J1,1);
-	
+	C := (J1,2);
+	G := MyPuissance4.AjoutePion(G,C);
 	Put_Line("");
 	MyPuissance4.AfficheGrille(G);
-	MyPuissance4.AjoutePion(G,J2,1);
 	
+	C := (J2,1);
+	G := MyPuissance4.AjoutePion(G,C);
 	Put_Line("");
 	MyPuissance4.AfficheGrille(G);
-	MyPuissance4.AjoutePion(G,J1,1);
 	
-	Put_Line("");
-	MyPuissance4.AfficheGrille(G);
-	MyPuissance4.AjoutePion(G,J2,1);
-	
-	Put_Line("");
-	MyPuissance4.AfficheGrille(G);
-	MyPuissance4.AjoutePion(G,J1,1);
-	
+	C := (J1,2);
+	G := MyPuissance4.AjoutePion(G,C);
 	Put_Line("");
 	MyPuissance4.AfficheGrille(G);
 	
