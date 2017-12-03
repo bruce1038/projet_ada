@@ -86,10 +86,23 @@ package body Puissance4 is
 		Put_Line("");
 		Put_Line("Dans quelle colonne souhaitez vous placer votre pion ?");
 		Get(C.Y);
-		while not TestCoup(G,C) loop
-			Get(C.Y);
-		end loop;
+		
+		if not ColonneVide(G, C.Y) then raise AjoutColonnePleine;
+		end if;
+		if C.Y > 6 or C.Y < 1 then raise AjoutColonneInnexistante;
+		end if; 
+		
 		return C;
+		
+		exception 
+			when AjoutColonnePleine =>
+				Put_Line ("Oups, cette colonne est pleine.");
+				C.Y := -1;
+				return C; 
+			when CONSTRAINT_ERROR =>
+				Put_Line ("Hein ... Mais cette colonne n'existe pas ... ");
+				C.Y := -1;
+				return C;
 	end CoupJoueur1;
 	
 	function CoupJoueur2(G : Grille) return Coup is
@@ -100,29 +113,28 @@ package body Puissance4 is
 		Put_Line("");
 		Put_Line("Dans quelle colonne souhaitez vous placer votre pion ?");
 		Get(C.Y);
-		while not TestCoup(G,C) loop
-			Get(C.Y);
-		end loop;
-		return C;
-	end CoupJoueur2;
-	
-	function TestCoup(G : Grille; C : Coup) return boolean is
-	begin
+		
 		if not ColonneVide(G, C.Y) then raise AjoutColonnePleine;
 		end if;
 		if C.Y > 6 or C.Y < 1 then raise AjoutColonneInnexistante;
-		end if;
+		end if; 
 		
-		return true; 
+		return C;
 		
 		exception 
 			when AjoutColonnePleine =>
 				Put_Line ("Oups, cette colonne est pleine.");
-				return false; 
+				C.Y := -1;
+				return C; 
 			when CONSTRAINT_ERROR =>
 				Put_Line ("Hein ... Mais cette colonne n'existe pas ... ");
-				return false;
-	end TestCoup; 
+				C.Y := -1;
+				return C;
+	end CoupJoueur2;
+
+				
+		
+		
 	
 end Puissance4;
 	

@@ -1,1 +1,3 @@
-		Nom : String(1..6); Ligne 16 puissance4.ads ====> Problème
+		if C.Y > 6 or C.Y < 1 then raise AjoutColonneInnexistante; Ligne 119 puissance4.add ====> Problème
+		6 doit être remplacé par le nombre de lignes !!
+		

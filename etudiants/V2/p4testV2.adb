@@ -18,17 +18,29 @@ begin
 	MyPuissance4.AfficheJoueur(J1);
 	MyPuissance4.AfficheJoueur(J2);
 	
-	for I in 1..20 loop 
+	C := MyPuissance4.CoupJoueur1(G);
+	while C.Y = -1 loop
 		C := MyPuissance4.CoupJoueur1(G);
-		G := MyPuissance4.AjoutePion(G,C);
-		Put_Line("");
-		MyPuissance4.AfficheCoup(C);
-	
-		C := MyPuissance4.CoupJoueur2(G);
-		G := MyPuissance4.AjoutePion(G,C);
-		Put_Line("");
-		MyPuissance4.AfficheCoup(C);
 	end loop;
+	G := MyPuissance4.AjoutePion(G,C);
+	Put_Line("");
+	MyPuissance4.AfficheCoup(C);
+	
+	C := MyPuissance4.CoupJoueur2(G);
+	while C.Y = -1 loop
+		C := MyPuissance4.CoupJoueur2(G);
+	end loop;
+	G := MyPuissance4.AjoutePion(G,C);
+	Put_Line("");
+	MyPuissance4.AfficheCoup(C);
+	
+	C := MyPuissance4.CoupJoueur1(G);
+	while C.Y = -1 loop
+		C := MyPuissance4.CoupJoueur1(G);
+	end loop;
+	G := MyPuissance4.AjoutePion(G,C);
+	Put_Line("");
+	MyPuissance4.AfficheCoup(C);
 	
 end P4test;
 

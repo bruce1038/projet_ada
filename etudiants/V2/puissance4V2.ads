@@ -35,7 +35,6 @@ package Puissance4 is
 	procedure InitGrille (G : in out Grille); -- Initialise une grille de jeu dont l'état de chaque cellule est égal à 0
 	function ColonneVide (G : in Grille; Y : Integer) return boolean; -- Retourne un boléen qui indique la colonne X est vide
 	procedure AfficheJoueur(J : in Joueur);
-	function TestCoup(G : Grille; C : Coup) return boolean; -- Fonction qui teste si le coup demandé par un joueur est autorisé
 	
 	function AjoutePion(G : grille; C : Coup) return Grille; -- Ajoute un pion dans la colonne Y donnée par le joueur J
 	procedure AfficheGrille (G : in Grille);
@@ -47,9 +46,9 @@ package Puissance4 is
 	-- Exceptions
 	--
 	
-	AjoutIllegal : exception; -- Ajout de pion non autorisé.
-	AjoutColonnePleine : exception; -- Ajout sur une colonne pleine.
-	AjoutColonneInnexistante : exception; -- Ajout dans une colonne inexistante.
+	AjoutIllegal : exception; -- Ajout de pion non autorisé car colonne pleine.
+	AjoutColonnePleine : exception;
+	AjoutColonneInnexistante : exception;
 	
 end Puissance4;
 	

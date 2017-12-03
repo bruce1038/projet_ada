@@ -1,0 +1,87 @@
+V "GNAT Lib v4.8"
+M P W=b
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_STANDARD_STORAGE_POOLS
+RV SPARK
+
+U p4test%b		p4test.adb		8ac91508 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W puissance4%s		puissance4.adb		puissance4.ali
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20121213103024 3ffc8e18
+D a-except.ads		20121213103024 10fcae55
+D a-finali.ads		20121213103024 52ecdc1b
+D a-inteio.ads		20121213103029 f64b89a4
+D a-ioexce.ads		20121213103029 8b9de6cd
+D a-stream.ads		20121213103024 2ca4ee37
+D a-tags.ads		20121213103024 6c0509d0
+D a-textio.ads		20130106093217 386df5d4
+D a-tiinio.ads		20121213103024 aa04e5d6
+D a-unccon.ads		20121213103024 f9eb8f06
+D interfac.ads		20121213103024 129923ea
+D i-cstrea.ads		20130106093208 3286f6aa
+D p4test.adb		20171203140602 98869ae8
+D puissance4.ads	20171203140545 dc69f390
+D puissance4.adb	20171203140713 14f4b64e
+D system.ads		20121213103024 90249111
+D s-crtl.ads		20130106093200 1ea48bce
+D s-exctab.ads		20121213103029 66e51330
+D s-ficobl.ads		20121213103029 55a71d43
+D s-finmas.ads		20121213103024 b95bb341
+D s-finroo.ads		20121213103024 4ff27390
+D s-imgint.ads		20121213103024 02dbe0c2
+D s-parame.ads		20121213103024 b6e20cc0
+D s-pooglo.ads		20121213103024 542f33d0
+D s-soflin.ads		20121213103024 24c8153c
+D s-stache.ads		20121213103024 596fc1b4
+D s-stalib.ads		20130106093355 f78bcf95
+D s-stoele.ads		20121213103024 facd7d98
+D s-stoele.adb		20121213103024 afc5dc80
+D s-stopoo.ads		20121213103024 7b8fbeee
+D s-traent.ads		20121213103024 5221ee41
+D s-unstyp.ads		20121213103024 6ae15c76
+D s-wchcon.ads		20121213103024 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 13|1r6 1r19 2r5 2r18
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[9|45] 13|1w23 2r22
+X 8 a-textio.ads
+49K13*Text_IO 471e16 13|1w10 2r9
+263U14*Put_Line 13|24s17 29s17
+X 13 p4test.adb
+6U11*P4test 6b11 33l5 33t11
+7K17 MyPuissance4[14|5] 8r14 9r14 10r13 11r13 13r9 14r9 18r9 19r9 22r22 23r22
+. 25r17 27r22 28r22 30r17
+8r9 J1{14|21R14[7]} 16m9 18r36
+9r9 J2{14|21R14[7]} 17m9 19r36
+10a9 G{14|17A14[7]} 13m33 13r33 14r36 22r47 23m17 23r46 27r47 28m17 28r46
+11r9 C{14|26R14[7]} 22m17 23r48 25r42 27m17 28r48 30r42
+21i13 I{integer}
+X 14 puissance4.ads
+5k9*Puissance4 13|4w6 7r37 14|54e15
+17A14 Grille(integer)<integer><integer> 13|10r26[7]
+21R14 Joueur 13|8r27[7] 9r27[7]
+26R14 Coup 13|11r26[7]
+35U19 InitGrille 13|13s22[7]
+37U19 AfficheJoueur 13|18s22[7] 19s22[7]
+40V18 AjoutePion{17A14[13|7]} 13|23s35[7] 28s35[7]
+41U19 AfficheGrille 13|14s22[7]
+42U19 AfficheCoup 13|25s30[7] 30s30[7]
+43V18 CoupJoueur1{26R14[13|7]} 13|22s35[7]
+44V18 CoupJoueur2{26R14[13|7]} 13|27s35[7]
+
