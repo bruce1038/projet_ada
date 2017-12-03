@@ -30,12 +30,8 @@ package body Puissance4 is
 		for X in G'Range(1) loop
 				Put_Line("");
 			for Y in G'Range(2) loop
-				Put(" | ");
-				if G(X,Y) = 1 then Put('X');
-				else if G(X,Y) = 2 then Put('O');
-				else Put(' ');
-				end if;
-				end if;
+				Put(" |");
+				Put(Integer'Image(G(X,Y)));
 			end loop;
 			Put(" |");
 		end loop;
@@ -281,7 +277,7 @@ package body Puissance4 is
 	procedure AfficheCoup(C : in Coup) is 
 	begin
 		Put_Line("");
-		Put("Le joueur");
+		Put("Le joueur ");
 		Put(Integer'Image(C.J.Id));
 		Put(" a joué un coup colonne ");
 		Put(Integer'Image(C.Y));
@@ -291,7 +287,9 @@ package body Puissance4 is
 		C : Coup;
 	begin 
 		C.J.Id := 1;
+		AfficheGrille(G);
 		Put_Line("");
+		Put_Line("C'est au joueur 1 de jouer");
 		Put_Line("Dans quelle colonne souhaitez vous placer votre pion ?");
 		Get(C.Y);
 		while not TestCoup(G,C) loop
@@ -304,7 +302,9 @@ package body Puissance4 is
 		C : Coup;
 	begin 
 		C.J.Id := 2;
+		AfficheGrille(G);
 		Put_Line("");
+		Put_Line("C'est au joueur 2 de jouer");
 		Put_Line("Dans quelle colonne souhaitez vous placer votre pion ?");
 		Get(C.Y);
 		while not TestCoup(G,C) loop

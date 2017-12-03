@@ -52,7 +52,10 @@ package Puissance4 is
 	AjoutIllegal : exception; -- Ajout de pion non autorisé.
 	AjoutColonnePleine : exception; -- Ajout sur une colonne pleine.
 	AjoutColonneInnexistante : exception; -- Ajout dans une colonne inexistante.
-
+	
+	MatchNul : exception;
+	J1Win : exception;
+	J2Win : exception;
 	
 end Puissance4;
 	

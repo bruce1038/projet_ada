@@ -1,10 +1,9 @@
-with Liste_Generique, Participant;
 with Ada.Text_IO;
-use Participant;
 
 generic
     type Etat is private;
     type Coup is private;
+    type Joueur is private;
    
     -- Nom affichable du Joueur1
     Nom_Joueur1 : String;
@@ -31,6 +30,13 @@ package Partie is
     -- Joue une partie. 
     -- E : Etat initial
     -- J : Joueur qui commence
-    procedure Joue_Partie(E : in out Etat; J : in Joueur);
+    procedure Joue_Partie(E : in out Etat; J1 : in Joueur; J2 : in Joueur);
+    
+    --
+    -- Exceptions
+    -- 	
+	MatchNul : exception; -- Exception levée par un match nul
+	J1Win : exception; -- Exception levée par un match gagné par le joueur 1
+	J2Win : exception; -- Exception levée par un match gagné par le joueur 2
    
 end Partie;
