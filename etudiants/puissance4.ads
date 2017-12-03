@@ -1,7 +1,7 @@
 generic
 	NbLignes : Integer;
 	NbColonnes : Integer;
-	
+	NbCoupsGagnant : Integer;
 package Puissance4 is
 	
 	--
@@ -38,6 +38,8 @@ package Puissance4 is
 	function TestCoup(G : Grille; C : Coup) return boolean; -- Fonction qui teste si le coup demandé par un joueur est autorisé
 	
 	function AjoutePion(G : grille; C : Coup) return Grille; -- Ajoute un pion dans la colonne Y donnée par le joueur J
+	function Est_Gagnant(G : Grille; J : Joueur) return Boolean;
+   	function Est_Nul(G : Grille) return Boolean;
 	procedure AfficheGrille (G : in Grille);
 	procedure AfficheCoup(C : in Coup); 
 	function CoupJoueur1(G : Grille) return Coup;
