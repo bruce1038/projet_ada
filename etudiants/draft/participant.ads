@@ -1,6 +1,10 @@
 package Participant is
    
-    type Joueur is (Joueur1, Joueur2);
+    type Joueur is 
+    record
+    	Nom : String;
+    	Signe : Character;
+    	Id : Integer;
    
     -- Retourne l'adversaire du joueur passé en paramètre
     function Adversaire(J : Joueur) return Joueur;
