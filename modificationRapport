@@ -1,0 +1,13 @@
+Ce package contient un ensemble de fonctions qui s'appliquent à des listes génériques, notamment : 
+- les deux types génériques Itérateur et Liste.
+Les listes sont implémentées avec des listes chainées
+Et les fonctions :
+- Affiche_Liste prend en paramètre une liste et l'affiche avec un parcours à l'ai d'un itérateur.
+-Insere_Tete prend en paramètre une liste et un élément et ajoute l’élément en tête de la liste chainée.
+-Libere_Liste prend en paramètre une liste et la désalloue et met tous les pointeurs de la liste à nul. Attention, cette fonction ne supprime pas les itérateurs qui pointeraient encore sur la liste, ils doivent être désalloués séparément, de préférence après avoir fini de les utiliser
+-Creer_Itérateur prend en paramètre une liste et renvoie un itérateur qui pointe sur la première cellule de la liste.
+Libère Itérateur libère littérateur précédemment alloué.
+Suivant fait passer littérateur à la cellule suivante dans le liste de maniere transparente.
+-Element_Courant  prend en paramètre un itérateur en renvoie l’élément de la liste concerné par l'itérateur.
+-A_suivant pend en paramètre un itérateur et renvoie un booléen qui indique si il reste des éléments dans la liste après l'itérateur.
+

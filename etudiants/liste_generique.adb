@@ -138,23 +138,14 @@ package body liste_generique is
 	procedure Suivant(It : in out Iterateur) is
 
 	begin
-
 		if A_Suivant(It)=false then
-
 			raise FinDeListe;
-
 		end if;
-
 		It.Elt := It.Suiv.Elt;
-
 		It.Suiv := It.Suiv.Suiv;
 
-
-
 	exception when FinDeListe =>
-
 		Put_Line("\n un iterateur a été utilisé alors qu'il avait atteint la fin de la liste\n");
-
 	end Suivant;
 
 
@@ -162,37 +153,26 @@ package body liste_generique is
 
 
 	function Element_Courant(It : Iterateur) return Element is
-
 	begin
-
 		return It.Elt;
-
 	end Element_Courant;
 
 
-
 	function A_Suivant(It : Iterateur) return Boolean is
-
 	begin
 
-
-
 		if It.Suiv = NULL then
-
 			return false;
-
 		else
-
 			return true;
-
 		end if;
-
-
-
 	end A_Suivant;
 
 
-
-
+	function Est_Vide(L : Liste)return Boolean is 
+		if L=NULL then return True;
+		end if;
+		return False;
+	end Est_Vide;
 
 end liste_generique;

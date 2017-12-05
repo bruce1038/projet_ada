@@ -44,7 +44,9 @@ package Puissance4 is
 	procedure AfficheCoup(C : in Coup); -- Affiche le Coup C joué
 	function CoupJoueur1(G : Grille) return Coup; -- Retourne un coup du joueur 1 sur la grille G 
 	function CoupJoueur2(G : Grille) return Coup; -- Retourne un coup du joueur 2 sur la grille G
+	function Evaluation(E: Grille, J : Joueur)return Integer; --retourne un entier entre +9999 et 0
 	
+
 	--
 	-- Exceptions
 	--

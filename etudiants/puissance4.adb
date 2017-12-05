@@ -331,4 +331,21 @@ package body Puissance4 is
 				return false;
 	end TestCoup; 
 	
+
+	function Evaluation(E : Grille; J : Joueur) return integer is 
+
+	begin
+	-- Fonction separée en quatres étapes :
+	-- situation de gauche à droite
+	--Situation de Haut en bas et diagonale montante de gauche à droite 
+	--puis descendante de gauche à droite
+	return 0; --pour l'instant on teste min max
+	
+
+	end Evaluation;
+
+
+
+
+
 end Puissance4;

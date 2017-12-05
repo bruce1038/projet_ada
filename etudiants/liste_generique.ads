@@ -46,7 +46,7 @@ package Liste_Generique is
     -- Cree un nouvel iterateur
     function Creer_Iterateur (L : Liste) return Iterateur;
 
-
+	function Est_Vide(L : Liste)return Boolean;
 
     -- Liberation d'un iterateur
     procedure Libere_Iterateur(It : in out Iterateur);
