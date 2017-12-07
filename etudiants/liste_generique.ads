@@ -25,8 +25,6 @@ generic
 
 package Liste_Generique is
 
-
-
   -- type Cellule is private;
    type Liste is private;
  --  type Iterateur_Interne is private;

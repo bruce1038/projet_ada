@@ -1,6 +1,6 @@
 --with Participant; use Participant; 
 with Liste_Generique;
-with Ada.Text_IO;
+with Ada.Text_IO; use Ada.Text_IO;
 
 with Puissance4;
 with Partie;
@@ -27,24 +27,19 @@ generic
     -- Affiche a l'ecran le coup passe en parametre
     with procedure Affiche_Coup(C : in Coup);
  -- Implantation d'un package de liste de coups
-	with package Liste_Coups  is new Liste_Generique(Coup,Affiche_Coup);
+	with package  ListeCoups  is new Liste_Generique(Coup,Affiche_Coup);
     -- Retourne la liste des coups possibles pour J a partir de l'etat 
-    with function Coups_Possibles(E : Grille; J : Joueur)
-            return Liste_Coups.Liste; 
+    with function Coups_Possibles(E : Grille; J : Joueur)return ListeCoups.Liste; 
     -- Evaluation statique du jeu du point de vue de l'ordinateur
-    with function Eval(E : Grille) return Integer;  
-
-    with function Colonne_Pas_Pleine(E :in  Grille;Colonne : Integer)return Boolean;
+    with function Eval(E :in Grille; J: Joueur) return Integer;  
+	with function Colonne_Pas_Pleine(E :in  Grille ; Colonne : in Integer)return Boolean;
 	
 
  
     -- Profondeur de recherche du coup
     P : Natural;
-   
-
-
-	
-    
+	J : Joueur;
+	Adversaire : Joueur;
 package Moteur_Jeu is
 
 
@@ -58,15 +53,15 @@ package Moteur_Jeu is
 private 
     -- Evaluation d'un coup a partir d'un etat donne
     -- E : Etat courant
-    -- P : profondeur a laquelle cette evaluation doit etre realisee
+    -- P : profondeur a laquelle cette evaluation doit etre réalisée
     -- C : Coup a evaluer
     -- J : Joueur qui realise le coup
 
 
-	 function Eval_Min(E :Grille ; prof : Natural ;C : Coup; J : Joueur)return Integer;
-	 function Eval_Max(E :Grille ; prof : Natural ;C : Coup; J : Joueur)return Integer;
+	 function Eval_Min(E :Grille ; prof : Natural )return Integer;
+	 function Eval_Max(E :Grille ; prof : Natural )return Integer;
 
-    function Eval_Min_Max(E :Grille; P : Natural; C : Coup; J : Joueur)
-        return Integer;
+    --function Eval_Min_Max(E :Grille; P : Natural; C : Coup; J : Joueur) return Integer;
+       
    
 end Moteur_Jeu;

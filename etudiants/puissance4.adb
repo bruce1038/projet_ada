@@ -1,6 +1,6 @@
 with Ada.Text_IO, Ada.Integer_Text_IO;
 use Ada.Text_IO, Ada.Integer_Text_IO;
-
+with Liste_Generique;
 package body Puissance4 is
 	
 	procedure InitGrille (G : in out Grille) is
@@ -344,8 +344,24 @@ package body Puissance4 is
 
 	end Evaluation;
 
+	function Coups_Disponibles (E : in Grille ; J : in Joueur) return Liste_Coups.Liste is 
+	I : Integer :=1;
+	L : Liste_Coups.Liste := Liste_Coups.Creer_Liste;
+	C : Coup;
+	begin
+	C.J := J;
+	
+	while I<= NbColonnes loop
+		if ColonneVide(E, I) then
+			C.Y :=I;
+			Liste_Coups.Insere_Tete(C,L);
+		end if;
+		I :=I+1;
+	end loop;
+	return L;
 
+	end Coups_Disponibles;
 
-
+	
 
 end Puissance4;

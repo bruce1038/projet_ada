@@ -5,29 +5,36 @@ with Puissance4;
 with Partie;
 
 with Moteur_Jeu;
-with Liste_Generique; 
+--with Liste_Generique; 
 
 
 procedure P4test is
 
 package MyPuissance4 is new Puissance4(7,7,4);
 	
-package Liste_Coups is new Liste_Generique(MyPuissance4.Coup, MyPuissance4.AfficheCoup);
+--package Liste_Coups is new Liste_Generique(MyPuissance4.Coup, MyPuissance4.AfficheCoup);
+	J1 : MyPuissance4.Joueur := ('X',1);
+	J2 : MyPuissance4.Joueur := ('O',2);
+
+
+	G : MyPuissance4.Grille;
 
 package MyAI is new Moteur_Jeu(
 			MyPuissance4.Grille,
 			MyPuissance4.Coup,
 			MyPuissance4.Joueur,
-		--	
+
 			MyPuissance4.AjoutePion,
 			MyPuissance4.Est_Gagnant,
 			MyPuissance4.Est_Nul,
 			MyPuissance4.AfficheCoup,
-			Liste_Coups,
+			MyPuissance4.Liste_Coups,
+			MyPuissance4.Coups_Disponibles,
 			MyPuissance4.Evaluation,
 			MyPuissance4.ColonneVide,
-			
-			4);
+			1,
+			J2,
+			J1);
 
 package MyPartie is new Partie(
 			MyPuissance4.Grille,
@@ -46,9 +53,7 @@ package MyPartie is new Partie(
 
 
 				  
-	J1 : MyPuissance4.Joueur;
-	J2 : MyPuissance4.Joueur;
-	G : MyPuissance4.Grille;
+
 begin
 	MyPuissance4.InitGrille(G);
 	

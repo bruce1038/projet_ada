@@ -17,17 +17,23 @@ package body liste_generique is
 
 
    procedure Affiche_Liste (L : in Liste) is
-      I : Iterateur := Creer_Iterateur (L);
+      I : Iterateur ;
    begin
-      if A_Suivant(I) then
-         Put(I.Elt);
-      end if;
+	if not Est_Vide(L)then 
+
+	  I := Creer_Iterateur (L);
+	
+      Put(I.Elt);
+    
       while A_Suivant(I) loop
 
          Suivant(I);
          Put(I.Elt);
       end loop;
+
       Libere_Iterateur(I);
+		
+	end if;
    end Affiche_Liste;
 
 
@@ -153,7 +159,11 @@ package body liste_generique is
 
 
 	function Element_Courant(It : Iterateur) return Element is
+
+	
 	begin
+		Put("WTF ?");
+		Put(It.Elt);
 		return It.Elt;
 	end Element_Courant;
 
@@ -170,6 +180,7 @@ package body liste_generique is
 
 
 	function Est_Vide(L : Liste)return Boolean is 
+	begin
 		if L=NULL then return True;
 		end if;
 		return False;
