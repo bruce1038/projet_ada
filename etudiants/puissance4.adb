@@ -43,9 +43,14 @@ package body Puissance4 is
 	
 	function ColonneVide (G : in Grille; Y : Integer) return boolean is
 	begin
+		if Y > NbColonnes or Y< 0 then raise AjoutColonneInnexistante; end if;
+
 		if (G(1,Y)=0) then return true;
 		end if;
 		return false;
+		exception when AjoutColonneInnexistante => Put("Ajout Colonne inexistante ====================================================");
+							Put(Integer'Image(Y));
+							return false;
 	end ColonneVide;
 	
 	procedure AfficheJoueur(J : in Joueur) is
@@ -332,36 +337,30 @@ package body Puissance4 is
 	end TestCoup; 
 	
 
-	function Evaluation(E : Grille; J : Joueur) return integer is 
-
-	begin
-	-- Fonction separée en quatres étapes :
-	-- situation de gauche à droite
-	--Situation de Haut en bas et diagonale montante de gauche à droite 
-	--puis descendante de gauche à droite
-	return 0; --pour l'instant on teste min max
-	
-
-	end Evaluation;
-
 	function Coups_Disponibles (E : in Grille ; J : in Joueur) return Liste_Coups.Liste is 
-	I : Integer :=1;
+	n : Integer :=1;
 	L : Liste_Coups.Liste := Liste_Coups.Creer_Liste;
 	C : Coup;
 	begin
 	C.J := J;
 	
-	while I<= NbColonnes loop
-		if ColonneVide(E, I) then
-			C.Y :=I;
+	while n<= NbColonnes loop
+		if ColonneVide(E, n) then
+			C.Y :=n;
 			Liste_Coups.Insere_Tete(C,L);
 		end if;
-		I :=I+1;
+		n :=n+1;
 	end loop;
 	return L;
 
 	end Coups_Disponibles;
 
+
+	function Evaluation(G : Grille; J : Joueur;Adv : Joueur) return integer is 
+	begin
+		return 0 ;
+
+	end Evaluation;
 	
 
 end Puissance4;

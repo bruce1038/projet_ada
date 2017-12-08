@@ -28,10 +28,12 @@ generic
     with procedure Affiche_Coup(C : in Coup);
  -- Implantation d'un package de liste de coups
 	with package  ListeCoups  is new Liste_Generique(Coup,Affiche_Coup);
+	
+	
     -- Retourne la liste des coups possibles pour J a partir de l'etat 
     with function Coups_Possibles(E : Grille; J : Joueur)return ListeCoups.Liste; 
     -- Evaluation statique du jeu du point de vue de l'ordinateur
-    with function Eval(E :in Grille; J: Joueur) return Integer;  
+    with function Eval(E :in Grille; J: Joueur; Adv : Joueur) return Integer;  
 	with function Colonne_Pas_Pleine(E :in  Grille ; Colonne : in Integer)return Boolean;
 	
 
@@ -40,6 +42,10 @@ generic
     P : Natural;
 	J : Joueur;
 	Adversaire : Joueur;
+	--colonnes : Integer'Range;
+	--with package Aleatoire is new Ada.Numerics.Discrete_Random(colonnes);
+
+
 package Moteur_Jeu is
 
 
@@ -57,9 +63,9 @@ private
     -- C : Coup a evaluer
     -- J : Joueur qui realise le coup
 
-
-	 function Eval_Min(E :Grille ; prof : Natural )return Integer;
-	 function Eval_Max(E :Grille ; prof : Natural )return Integer;
+	function min_max(E : Grille;prof : Natural ;bonJoueur : Boolean)return Integer ;
+	-- function Eval_Min(E :Grille ; prof : Natural )return Integer;
+	-- function Eval_Max(E :Grille ; prof : Natural )return Integer;
 
     --function Eval_Min_Max(E :Grille; P : Natural; C : Coup; J : Joueur) return Integer;
        

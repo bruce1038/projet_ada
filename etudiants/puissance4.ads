@@ -51,7 +51,7 @@ package Puissance4 is
 
 	function CoupJoueur1(G : Grille) return Coup; -- Retourne un coup du joueur 1 sur la grille G 
 	function CoupJoueur2(G : Grille) return Coup; -- Retourne un coup du joueur 2 sur la grille G
-	function Evaluation(E: Grille; J : Joueur)return Integer; --retourne un entier entre +9999 et 0
+	function Evaluation(G: Grille; J : Joueur; Adv : Joueur)return Integer; --retourne un entier entre +9999 et 0
 	function Coups_Disponibles (E : in Grille ; J : in Joueur) return Liste_Coups.Liste; --Retourne la liste des coups disponibles pour un joueur(Pas tres utile dans le puissnce 4 pour l'humain mais necessaire pour l'IA)
 	
 	-- Exceptions

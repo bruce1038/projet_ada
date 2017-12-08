@@ -162,8 +162,6 @@ package body liste_generique is
 
 	
 	begin
-		Put("WTF ?");
-		Put(It.Elt);
 		return It.Elt;
 	end Element_Courant;
 

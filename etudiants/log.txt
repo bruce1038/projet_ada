@@ -1,0 +1,11 @@
+X
+   1   2   3   4   5   6   7 
+ |   |   |   |   |   |   |   |
+ |   |   |   |   |   |   |   |
+ |   |   |   |   |   |   |   |
+ |   |   |   |   |   |   |   |
+ |   |   |   |   |   |   |   |
+ |   |   |   |   |   |   |   |
+ |   |   |   |   |   |   |   |
+C'est à Jacquie de jouer
+Dans quelle colonne souhaitez vous placer votre pion ?
