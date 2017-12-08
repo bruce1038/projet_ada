@@ -1,10 +1,10 @@
---with Participant; use Participant; 
+--Moteur du jeu(IA)
 with Liste_Generique;
 with Ada.Text_IO; use Ada.Text_IO;
 
 with Puissance4;
 with Partie;
---with Moteur_Jeu;
+
 
 
 
@@ -40,11 +40,9 @@ generic
  
     -- Profondeur de recherche du coup
     P : Natural;
-	J : Joueur;
-	Adversaire : Joueur;
-	--colonnes : Integer'Range;
-	--with package Aleatoire is new Ada.Numerics.Discrete_Random(colonnes);
-
+	J : Joueur;-- joueur de l'IA
+	Adversaire : Joueur;--Son adversaire
+	
 
 package Moteur_Jeu is
 
@@ -59,15 +57,15 @@ package Moteur_Jeu is
 private 
     -- Evaluation d'un coup a partir d'un etat donne
     -- E : Etat courant
-    -- P : profondeur a laquelle cette evaluation doit etre réalisée
-    -- C : Coup a evaluer
-    -- J : Joueur qui realise le coup
+    -- prof : profondeur a laquelle cette evaluation doit etre réalisée
+	--booleen pour savoir si on est dans la partie min ou dans la partie max
+
 
 	function min_max(E : Grille;prof : Natural ;bonJoueur : Boolean)return Integer ;
 	-- function Eval_Min(E :Grille ; prof : Natural )return Integer;
 	-- function Eval_Max(E :Grille ; prof : Natural )return Integer;
 
-    --function Eval_Min_Max(E :Grille; P : Natural; C : Coup; J : Joueur) return Integer;
+  
        
    
 end Moteur_Jeu;

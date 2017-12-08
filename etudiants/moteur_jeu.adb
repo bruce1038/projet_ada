@@ -1,4 +1,4 @@
---with Participant; use Participant; 
+
 with Liste_Generique;
 with Ada.Text_IO;
 with puissance4;
@@ -19,13 +19,10 @@ package body Moteur_Jeu is
 	meilleur_coup : Coup;
 	It : ListeCoups.Iterateur;
 	begin
-	--Put("Debut Choix coup");
+	
 	Lcoups := Coups_Possibles(E, J );
 
-	--Put_Line("Liste Coups :");
-	--ListeCoups.Affiche_Liste(LCoups);
-	--Put_Line("Fin Liste Coups :");
-	--Put_Line("");
+	
 	--Normalement ce cas ne se présente pas puisque le test se fait avant mais on ne sait jamais
 	if ListeCoups.Est_Vide(Lcoups) then
 		raise Fin_De_Partie;
@@ -41,7 +38,7 @@ package body Moteur_Jeu is
 	MaxVal := -9999;
 		
 	
-	--Put_Line("Debut Boucle Choix coup");
+	
 	--Test pour chaque coup 
 		--Appel de la fonction MIN pour evaluer les etats (Min appelle MAX), Cela revient à appeller MIN_Max mais le découpage en deux fonctions est plus facile à visualiser
 
@@ -60,8 +57,7 @@ package body Moteur_Jeu is
 		grille_test := Etat_Suivant(E ,  ListeCoups.Element_Courant(It));
 		val := min_max(grille_test,P-1,False);
 
-		Affiche_Coup(ListeCoups.Element_Courant(It));
-		Put_Line(Integer'Image(val));
+		
 
 			if val> MaxVal then 
 				MaxVal:= Val;
@@ -77,7 +73,7 @@ package body Moteur_Jeu is
 			end if;
 			
 	end loop;
-		--Put_Line("Fin Boucle Choix coup");
+		
 	
 		
 	--A la fin de la boucle , tout l'arbre a été testé, on peut dire quel est le meilleur coup d'après la fonction d'évaluation
@@ -108,15 +104,11 @@ package body Moteur_Jeu is
 
 	--On a gagné
 		if Est_Gagnant(E,J)then
-			--Put("+9999");
-			--Put_Line(Integer'Image(prof) );
-			return 9999*prof;--9999*prof;
+			return 9999*prof;-- gagner vite c'est mieux
 		end if;
 
 	--On a perdu 
 		if Est_Gagnant(E,Adversaire)then
-			--Put_Line("-9999");
-			--Put_Line(Integer'Image(prof) );
 			return -9999*prof;
 		end if;
 	--Match nul
@@ -180,6 +172,8 @@ package body Moteur_Jeu is
 			MeilleurVal:=+9999;
 			Lcoups := Coups_Possibles(E, Adversaire );
 			It := ListeCoups.Creer_Iterateur(Lcoups);
+
+			--premiere itération puis boucle
 			grille_test := Etat_Suivant(E ,  ListeCoups.Element_Courant(It));
 			val :=min_max(grille_test,prof-1,TRUE);
 			if val<MeilleurVal then 
@@ -192,8 +186,6 @@ package body Moteur_Jeu is
 				grille_test := Etat_Suivant(E ,  ListeCoups.Element_Courant(It));
 				val := min_max(grille_test,prof-1,TRUE);
 
-				--Affiche_Coup(ListeCoups.Element_Courant(It));
-				--Put_Line(Integer'Image(val));
 
 
 				if val<MeilleurVal then 

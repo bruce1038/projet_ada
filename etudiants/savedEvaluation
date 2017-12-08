@@ -1,0 +1,136 @@
+		X,Y,caseLG,caseLD,caseLH,tailleBloc : Integer;
+		bAmi : Boolean;
+		last : integer;  
+		advId : Integer;
+		pointsBlocs,MaxPointsLigne, MaxPointsGrille : Integer :=0;
+	begin
+	-- Fonction separée en quatres étapes :
+	-- situation de gauche à droite
+	--Situation de Haut en bas et diagonale montante de gauche à droite 
+	--puis descendante de gauche à droite
+
+	--une variable compte le nombre de cases disponibles à gauche d'un bloc de cases amies
+	--une autre compte à droite
+
+	--(ou en haut pour le cas vertical )
+
+	--une variable compte le nombre de cases amies dans le blocs courant
+	--un booleen pour savoir si on est dans un bloc ami
+		if J.Id = 1 then
+			advId :=2;
+		else
+			advId :=1;
+		end if;
+	
+	--Etape 1 : Situation horizontale
+		--initialisation de boucle
+		X:=1;
+		Y:=1;
+		bAmi:=false;
+		caseLG:=0;
+		caseLD:=0;
+		tailleBloc:=0;
+		last := advId;
+		
+		while X<=NbLignes loop
+			while Y<=NbColonnes loop
+				if G(X,Y) = 0 then  -- Si la case est libre
+				
+					if last = advId  then
+						caseLG:=1;
+					else if last = 0  then
+						if bAmi then -- si avant les cases vides il y avait des amis, c'est qu'on est à droite
+							caseLD:=caseLD+1;
+						else --si il n'y avait pas de bloc ami avant c'est qu'on est à gauche
+							caseLG :=caseLG + 1;
+						end if;--c'est perfectible mais deja pas mal (on peut etre à droite et à gauche d'un bloc libre mais notre adversaire va le voir de toute facon)	
+					else --si c'etait un ami avant, on est à droite
+						caseLD:=1;
+					end if;
+					end if;
+	
+				else if G(X,Y) = J.Id then --Si la case est "amie"
+					
+					
+					if last = advId  then
+						caseLG:=0;
+						tailleBloc:=1;
+					else if last = J.Id then
+						tailleBloc:=tailleBloc+1;
+					else --case vide avant
+						tailleBloc:=1;
+					end if;
+					end if;
+					bAmi:=TRUE; -- on rentre dans un bloc ami
+
+				else -- Si on tombe sur une case adverse
+					
+					bAmi:=False; -- on sort d'un bloc ami
+					caseLG:=0; --il faut tout recompter depuis le debut
+					caseLD:=0;
+					tailleBloc:=0;
+					
+				end if;
+				end if;
+		
+		
+				--maintenant on évalue le bloc en cours (si il y a un interet (bloc ami))
+				if bAmi=TRUE then
+					if tailleBloc+caseLD+caseLG >= NbCoupsGagnant then --Si on peut placer un coup gagnant sur la ligne
+						pointsBlocs:=0;
+						pointsBlocs:= 100 * tailleBloc + 50 * (caseLD+caseLG);--il faut bien mettre des coeffs à un moment;
+						if caseLG>0 and caseLD>0 and (tailleBloc+caseLD >= NbCoupsGagnant or tailleBloc+caseLg >= NbCoupsGagnant)then -- Si on peut placer un coup gagnant à gauche ou à droite
+							pointsBlocs := pointsBlocs*2; --c'est plus difficile à bloquer donc on rajoute des points
+						end if; 
+					end if;
+					--on a fais un calcul, on regarde les points qu'on a marqué
+					
+					if pointsBlocs > MaxPointsLigne then
+						MaxPointsLigne := pointsBlocs; 
+					end if;
+
+				end if;
+				
+				--on regarde combien on peut marquer sur cette ligne par rapport au max de la grille
+				if  MaxPointsLigne > MaxPointsGrille then
+					MaxPointsGrille := MaxPointsLigne; 
+				end if;
+				pointsBlocs:=0; --on recomptera intégralement pour le suivant, comme ca pas de jaloux
+				last := G(X,Y);
+				
+				Y:=Y+1;	
+			end loop;		
+			
+			--initialisation de tour de boucle
+			bAmi:=false;
+			caseLG:=0;
+			caseLD:=0;
+			tailleBloc:=0;
+			last := advId;
+			MaxPointsLigne :=0;
+			Y:=1;
+
+			X:=X+1;
+		end loop;
+		--Put_Line(Integer'Image(MaxPointsGrille));
+		--Etape 2 : verticalement ! 
+			--La meme chose qu'horizontalement mais pas dans le meme sens , on pourrait réutiliser le meme code tient !
+		
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	return MaxPointsGrille; --pour l'instant on teste min max
+	
