@@ -48,7 +48,7 @@ package body Puissance4 is
 		if (G(1,Y)=0) then return true;
 		end if;
 		return false;
-		exception when AjoutColonneInnexistante => Put("Ajout Colonne inexistante ====================================================");
+		exception when AjoutColonneInnexistante => Put("Ajout Colonne inexistante ");
 							Put(Integer'Image(Y));
 							return false;
 	end ColonneVide;

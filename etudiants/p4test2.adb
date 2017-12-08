@@ -23,6 +23,27 @@ package MyPuissance4 is new Puissance4(8,7,4);
 
 
 
+package MyAI is new Moteur_Jeu(
+			MyPuissance4.Grille,
+			MyPuissance4.Coup,
+			MyPuissance4.Joueur,
+
+			MyPuissance4.AjoutePion,
+			MyPuissance4.Est_Gagnant,
+			MyPuissance4.Est_Nul,
+			MyPuissance4.AfficheCoup,
+			MyPuissance4.Liste_Coups,
+			MyPuissance4.Coups_Disponibles,
+			MyPuissance4.Evaluation,
+			MyPuissance4.ColonneVide,
+			6,
+			J2,
+			J1
+			--colonnes,
+			--Aleatoire
+			);
+
+
 package MyPartie is new Partie(
 			MyPuissance4.Grille,
 			MyPuissance4.Coup,
@@ -35,7 +56,7 @@ package MyPartie is new Partie(
 			MyPuissance4.AfficheGrille,
 			MyPuissance4.AfficheCoup,
 			MyPuissance4.CoupJoueur1,
-			MyPuissance4.CoupJoueur2);
+			MyAI.Choix_Coup);
 
 
 
